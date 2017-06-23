@@ -8,12 +8,12 @@ The file system should be set up as:
 |  | etc.
 +--ffc_data
 |  +--original
-      | background.csv
-	  | etc
-   +--imputed
-      | (empty)
+|     | background.csv
+|  | etc
+|  +--imputed
+|     | (empty)
 +--codebook notes
-   | (empty)
+|  | (empty)
 | curate_codebook.py
 | prepreocess.py
 | impute_codebook.py
