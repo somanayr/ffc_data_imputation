@@ -18,6 +18,8 @@ The file system should be set up as:
 | prepreocess.py
 | impute_codebook.py
 
+The ffc_documentation folder should be filled with the codebooks you are interested in, found here: http://www.fragilefamilies.princeton.edu/documentation
+
 First, we need to curate the codebook and sort the questions by type. This will make it easier to impute the data later. So first, run:
 > python curate_codebook.py -i ffc_documentation/ff_hv_cb5.txt -o codebook_notes/ff_hv_cb5.txt
 
