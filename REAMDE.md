@@ -1,6 +1,32 @@
 The scripts we used for manually imputed the data for the Fragile Families Challenge
 
-Example commands:
-python preprocess.py -d ffc_data/original/background.csv -t codebook_notes/aggregate_year5.tsv -m imputation_notes/aggregate_year5.tsv -v -o ffc_data/imputed/aggregate_year5_unrestricted_nostrings.csv -sr
-python impute_codebook.py -c ffc_documentation/ff_teacher_cb5.txt -i codebook_notes/ff_teacher_cb5.tsv -o imputation_notes/ff_teacher_cb5.tsv -d ffc_data/original/background.csv
-python curate_codebook.py -i ffc_documentation/ff_hv_cb5.txt -o codebook_notes/ff_hv_cb5.txt
+Example usage:
+The file system should be set up as:
++--ffc_documentation
+|  | ff_hv_cb5.txt
+|  | ff_teacher_cb5.txt
+|  | etc.
++--ffc_data
+|  +--original
+      | background.csv
+	  | etc
+   +--imputed
+      | (empty)
++--codebook notes
+   | (empty)
+| curate_codebook.py
+| prepreocess.py
+| impute_codebook.py
+
+First, we need to curate the codebook and sort the questions by type. This will make it easier to impute the data later. So first, run:
+> python curate_codebook.py -i ffc_documentation/ff_hv_cb5.txt -o codebook_notes/ff_hv_cb5.txt
+
+Then, we need to specify how we want to impute each question where we can't automatically impute it.
+> python impute_codebook.py -c ffc_documentation/ff_teacher_cb5.txt -i codebook_notes/ff_teacher_cb5.tsv -o imputation_notes/ff_teacher_cb5.tsv -d ffc_data/original/background.csv
+
+Then, we need to combine all of our outputs:
+> cat codebook_notes/ff_*.tsv > codebook_notes/aggregate.tsv
+> cat imputation_notes/ff_*.tsv > imputation_notes/aggregate.tsv
+
+Finally, we need to update the Fragile Families dataset with our imputation instructions:
+> python preprocess.py -d ffc_data/original/background.csv -t codebook_notes/aggregate.tsv -m imputation_notes/aggregate.tsv -v -o ffc_data/imputed/aggregate_unrestricted_nostrings.csv -sr
