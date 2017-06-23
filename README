@@ -9,7 +9,7 @@ The file system should be set up as:
 +--ffc_data
 |  +--original
 |     | background.csv
-|  | etc
+|     | etc
 |  +--imputed
 |     | (empty)
 +--codebook notes
