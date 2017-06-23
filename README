@@ -26,7 +26,7 @@ First, we need to curate the codebook and sort the questions by type. This will 
 Then, we need to specify how we want to impute each question where we can't automatically impute it.
 > python impute_codebook.py -c ffc_documentation/ff_hv_cb5.txt -i codebook_notes/ff_hv_cb5.tsv -o imputation_notes/ff_hv_cb5.tsv -d ffc_data/original/background.csv
 
-Repeat the above two steps for each codebook you're interested in. Progress is saved, so you can quit at any time and resume where you left off. If you make a mistake, you can remove the last line in imputation_notes/ff_hv_cb5.tsv to remove the mistake.
+Repeat the above two steps for each codebook you're interested in. Be sure to substitute "ff_hv_cb5" for the codebook that you're working on. Progress is saved, so you can quit at any time and resume where you left off. If you make a mistake, you can remove the last line in imputation_notes/ff_hv_cb5.tsv to remove the mistake.
 
 Then, we need to combine all of our outputs:
 > cat codebook_notes/ff_*.tsv > codebook_notes/aggregate.tsv
